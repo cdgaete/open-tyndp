@@ -196,6 +196,8 @@ if config["enable"]["retrieve"]:
             "../scripts/retrieve_tyndp_bundle.py"
 
     rule retrieve_tyndp_pecd_data:
+        input:
+            "data/tyndp_2024_bundle", 
         params:
             # TODO Integrate into Zenodo tyndp data bundle
             url="https://storage.googleapis.com/open-tyndp-data-store/PECD.zip",
@@ -209,6 +211,8 @@ if config["enable"]["retrieve"]:
             "../scripts/retrieve_additional_tyndp_data.py"
 
     use rule retrieve_tyndp_pecd_data as retrieve_tyndp_hydro_inflows with:
+        input:
+            "data/tyndp_2024_bundle", 
         params:
             # TODO Integrate into Zenodo tyndp data bundle
             url="https://storage.googleapis.com/open-tyndp-data-store/Hydro_Inflows.zip",
